@@ -1,0 +1,6 @@
+{
+  "name": "POOL PARTY — Pixel Forge",
+  "description": "Multiplayer Public Goods Game for Pixel Forge (DSATM). Donate tokens, multiply the shared pool, and navigate the social dilemma in real time.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

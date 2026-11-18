@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+:root {
+  --bg-deep: #091017;
+  --bg-slate: #0f1924;
+  --surface: #132130;
+  --surface-elevated: #18293b;
+  --border-subtle: #253a50;
+  --border-gold: #f59e0b;
+  --border-pool: #22d3ee;
+
+  --gold: #ffd60a;
+  --orange: #ff8c1a;
+  --crimson: #f24423;
+  --pool: #22d3ee;
+  --gain: #22c55e;
+  --loss: #ef4444;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: "Outfit", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  /* Subtle arcade halftone & warm radial stage glow matching the Pixel Forge poster */
+  body {
+    background-image:
+      radial-gradient(ellipse 65% 45% at 75% 18%, rgba(255, 140, 26, 0.12), transparent 65%),
+      radial-gradient(ellipse 55% 45% at 18% 32%, rgba(34, 211, 238, 0.08), transparent 60%),
+      linear-gradient(180deg, #091017 0%, #0d1722 50%, #091017 100%);
+  }
+}
+
+.font-pixel {
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  letter-spacing: 0.04em;
+}
+
+.font-mono-num {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.pixel-gold-text {
+  background: linear-gradient(180deg, #ffd60a 0%, #ff9a1f 55%, #f24423 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 14px rgba(255, 154, 31, 0.35));
+}
+
+.btn-arcade-primary {
+  background: linear-gradient(180deg, #ffb020 0%, #ff7a12 55%, #e83e1c 100%);
+  color: #091017;
+  font-weight: 800;
+  border: 1px solid #ffd166;
+  box-shadow: 0 6px 24px rgba(255, 122, 18, 0.35);
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), filter 150ms ease;
+}
+.btn-arcade-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+.btn-arcade-primary:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.btn-arcade-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-arcade-secondary {
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  font-weight: 600;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+.btn-arcade-secondary:hover:not(:disabled) {
+  border-color: #f59e0b;
+  background: #1d3146;
+}
+
+.arcade-panel {
+  background: rgba(19, 33, 48, 0.88);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+}
+
+.arcade-pool-tank {
+  background: linear-gradient(180deg, rgba(14, 34, 52, 0.9) 0%, rgba(10, 26, 42, 0.95) 100%);
+  border: 1.5px solid rgba(34, 211, 238, 0.55);
+  box-shadow: 0 0 36px rgba(34, 211, 238, 0.16), inset 0 0 24px rgba(34, 211, 238, 0.08);
+  border-radius: 16px;
+}
+
+@keyframes pool-wave {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-18px); }
+}
+
+@keyframes float-pixel {
+  0%, 100% { transform: translateY(0px); opacity: 0.45; }
+  50% { transform: translateY(-10px); opacity: 0.85; }
+}
+
+.animate-pool-wave {
+  animation: pool-wave 4s ease-in-out infinite;
+}
+
+.animate-float-pixel {
+  animation: float-pixel 3.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pool-wave,
+  .animate-float-pixel {
+    animation: none !important;
+  }
+}
